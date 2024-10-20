@@ -134,27 +134,39 @@ fn main(){
         
         println!("{:?}", condensed_job_list);
 
-        //Find day to visit
-        let mut robert_n=0;
-        let mut robert_idx=0;
-        let mut mum_n=1e6;
-        let mut mum_idx=0;
-        for (idx, job) in &condensed_job_list.iter().enumerate(){
-            if job.n > robert_n{
-                robert_idx = idx;
-                robert_n = job.n;
-            }
-            if job.n < mum_n{
-                mum_idx = idx;
-                mum_n = job.n;
+        let mut count_vec: Vec<u64> = Vec::new();
+
+        //create vec of all days with count at day positions
+        for job in &condensed_job_list{
+            for _i in job.l..=job.r{
+                count_vec.push(job.count);
             }
         }
-        let robert_day = condensed_job_list[robert_idx].l;
-        let mum_day = condensed_job_list[mum_idx].l;
 
+        println!("{:?}", count_vec);
+
+        let mut robert: u64 = 0;
+        let mut robert_max: u64 = 0;
+        let mut mum: u64 = 0;
+        let mut mum_min: u64 = n;
+
+        let max_day:usize = n as usize -d as usize;
+        for day in 0..max_day{
+            let sum_slice:u64 = count_vec[day..day+d as usize].iter().sum();
+            if sum_slice > robert_max{
+                robert_max = sum_slice;
+                robert = day as u64 + 1;
+            }
+            if sum_slice < mum_min{
+                mum_min = sum_slice;
+                mum = day as u64 + 1;
+            }
+        }
+
+        
         //Output answers
-        println!("{}", robert_day);
-        println!("{}", mum_day);*/
+        println!("{}", robert);
+        println!("{}", mum);
 
     }
 }
