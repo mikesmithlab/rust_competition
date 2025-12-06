@@ -1,0 +1,7 @@
+create day:
+    cargo generate --path ./daily-template --name {{day}}
+    just get-input {{day}}
+
+get-input day:
+    cargo script ./scripts/get_aoc_input {{day}} {{justfile_directory()}}
+

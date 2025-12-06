@@ -1,1 +1,0 @@
-C:\Users\mikei\OneDrive\ -\ The\ University\ of\ Nottingham\Documents\Programming\rust_competition\codeforce\problem5\target\debug\problem5.exe: C:\Users\mikei\OneDrive\ -\ The\ University\ of\ Nottingham\Documents\Programming\rust_competition\codeforce\problem5\src\main.rs
